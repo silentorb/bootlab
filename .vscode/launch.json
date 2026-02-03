@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [        
+        {
+            "name": "Baseline QEMU+GDB",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/workspaces/bootlab/build/modules/baseline/baseline",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "miDebuggerServerAddress": "localhost:1234",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set architecture",
+                    "text": "-gdb-set architecture i386:x86-64",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "run-qemu-baseline",
+            "cwd": "${workspaceFolder}",
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "targetArchitecture": "x86_64",
+            "stopAtEntry": false,
+            // "logging": {
+            //     "engineLogging": true,
+            //     "moduleLoad": true,
+            //     "exceptions": true
+            // }
+        }
+    ]
+}

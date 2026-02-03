@@ -1,0 +1,5 @@
+# Used for QEMU logs
+/logs
+
+# Build directory
+/build

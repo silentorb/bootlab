@@ -1,0 +1,16 @@
+{
+    "name": "Bootlab",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools"
+            ]
+        }
+    },
+    "postCreateCommand": "./.devcontainer/postcreate",
+    "postStartCommand": "./devcontainer/poststart"
+}

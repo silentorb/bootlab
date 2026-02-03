@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run-qemu-baseline",
+            "type": "shell",
+            // The echo line is used to determine when the process has started.
+            // In some cases, omitting that echo can cause the VSCode GDB launch configuration to wait indefinitely for QEMU to start.
+            "command": "echo 'QEMU started'; qemu-system-x86_64 -nographic -no-reboot -device isa-debug-exit -drive format=raw,file=/workspaces/bootlab/build/modules/baseline/boot.bin -s -S -d cpu_reset -D /workspaces/bootlab/logs/qemu.log.%d",
+            "group": "none",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "new"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": [
+               "CMake: build"
+            ],
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".",
+                        "endsPattern": "QEMU started"
+                    }
+                }
+            ]
+        }
+    ]
+}
