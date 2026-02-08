@@ -1,13 +1,15 @@
-ENTRY(_start)
-
 OUTPUT_FORMAT(elf64-x86-64)
+ENTRY(pvh_entry)
 
 SECTIONS
 {
-    . = 0x00100000; /* load at 1MB */
+    . = 0x100000;
+
+    .note.Xen : {
+        KEEP(*(.note.Xen))
+    }
 
     .text : {
-        *(.multiboot)
         *(.text*)
     }
 

@@ -6,7 +6,7 @@
             "type": "shell",
             // The echo line is used to determine when the process has started.
             // In some cases, omitting that echo can cause the VSCode GDB launch configuration to wait indefinitely for QEMU to start.
-            "command": "echo 'QEMU started'; qemu-system-x86_64 -m 256 -display none -no-reboot -device isa-debug-exit -kernel /workspaces/bootlab/build/modules/baseline/kernel.elf -serial stdio -s -S -d cpu_reset",
+            "command": "echo 'QEMU started'; qemu-system-x86_64 -machine microvm -m 256 -display none -no-reboot -device isa-debug-exit -kernel /workspaces/bootlab/build/modules/baseline/kernel.elf -serial stdio -s -S -d cpu_reset",
             "group": "none",
             "presentation": {
                 "reveal": "always",
