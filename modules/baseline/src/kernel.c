@@ -1,20 +1,29 @@
 #include <stdint.h>
 
-static volatile uint16_t* const VGA = (uint16_t*)0xB8000;
+// QEMU debugcon port and debug exit
+#define DEBUGCON_PORT 0xe9
+#define DEBUG_EXIT_PORT 0x501
 
-static uint16_t vga_entry(char c, uint8_t color) {
-    return (uint16_t)c | (uint16_t)color << 8;
+static inline void outb(uint16_t port, uint8_t val) {
+    __asm__ volatile("outb %0, %1" : : "a"(val), "Nd"(port));
+}
+
+static void print(const char* str) {
+    while (*str) {
+        outb(DEBUGCON_PORT, *str++);
+    }
 }
 
 void kernel_main(void) {
-    const char* msg = "Booting micro-vm kernel...";
-    uint8_t color = 0x0F; // white on black
-
-    for (int i = 0; msg[i]; i++) {
-        VGA[i] = vga_entry(msg[i], color);
-    }
-
-    // Halt indefinitely
+    // Hello world!
+    print("Hello, World!\n");
+    print("Bootlab micro-vm kernel running in 64-bit mode\n");
+    print("SUCCESS: Kernel initialized\n");
+    
+    // Signal success and exit
+    outb(DEBUG_EXIT_PORT, 0x10);
+    
+    // Halt if debug exit doesn't work
     for (;;) {
         __asm__ volatile ("hlt");
     }
