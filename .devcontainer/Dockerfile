@@ -18,8 +18,7 @@ EOF
 # Build dependencies for experimental apps
 RUN <<EOF
 apt install -y --no-install-recommends \
-    nasm \
-#   gnu-efi
+    nasm
 EOF
 
 # Install COSMIC build tool dependencies

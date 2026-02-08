@@ -1,0 +1,6 @@
+{
+  "kernelOnly": true,
+  "assistant": {
+    "preventUserSpacePrompts": true
+  }
+}

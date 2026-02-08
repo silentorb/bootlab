@@ -5,7 +5,7 @@
             "name": "Baseline QEMU+GDB",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/workspaces/bootlab/build/modules/baseline/baseline",
+            "program": "/workspaces/bootlab/build/modules/baseline/kernel.elf",
             "miDebuggerPath": "/usr/bin/gdb",
             "miDebuggerServerAddress": "localhost:1234",
             "setupCommands": [
@@ -25,12 +25,7 @@
             "externalConsole": true,
             "MIMode": "gdb",
             "targetArchitecture": "x86_64",
-            "stopAtEntry": false,
-            // "logging": {
-            //     "engineLogging": true,
-            //     "moduleLoad": true,
-            //     "exceptions": true
-            // }
+            "stopAtEntry": false
         }
     ]
 }
