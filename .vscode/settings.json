@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "readelf": true,
+        "objdump": true,
+        "nm": true
+    },
+    "cmake.configureOnOpen": true
+}

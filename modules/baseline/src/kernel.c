@@ -8,7 +8,7 @@ static inline void outb(uint16_t port, uint8_t val) {
     __asm__ volatile("outb %0, %1" : : "a"(val), "Nd"(port));
 }
 
-static void print(const char* str) {
+static void __attribute__((noinline)) print(const char* str) {
     while (*str) {
         outb(DEBUGCON_PORT, *str++);
     }
@@ -16,7 +16,7 @@ static void print(const char* str) {
 
 void kernel_main(void) {
     // Hello world!
-    print("Hello, World!\n");
+    print("A\n");
     print("Bootlab micro-vm kernel running in 64-bit mode\n");
     print("SUCCESS: Kernel initialized\n");
     

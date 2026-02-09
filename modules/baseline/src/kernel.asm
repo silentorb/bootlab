@@ -23,6 +23,7 @@ section .text
 align 16
 pvh_entry:
     cli
+    cld                 ; Required for C code
 
     ; rdi = struct hvm_start_info * (can ignore for now)
     mov rsp, stack_top
@@ -37,5 +38,5 @@ pvh_entry:
 section .bss
 align 16
 stack:
-    resb 4096
+    resb 8192
 stack_top:
