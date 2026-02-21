@@ -10,7 +10,8 @@ static inline void outb(uint16_t port, uint8_t val) {
 
 static void __attribute__((noinline)) print(const char* str) {
     while (*str) {
-        outb(DEBUGCON_PORT, *str++);
+        outb(DEBUGCON_PORT, '@');
+        break;
     }
 }
 
