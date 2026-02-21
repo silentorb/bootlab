@@ -4,5 +4,9 @@
         "objdump": true,
         "nm": true
     },
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "debug.allowBreakpointsEverywhere": true,
+    "files.associations": {
+        "*.asm": "nasm"
+    }
 }

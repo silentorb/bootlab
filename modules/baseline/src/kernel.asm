@@ -9,7 +9,7 @@ extern kernel_main
 ; -------------------------
 section .note.Xen note alloc
 align 4
-    dd 4                  ; namesz
+    dd 4                  ; namesz (Length of name string--in this case "Xen" + `0`)
     dd 8                  ; descsz (64-bit entry)
     dd 18                 ; XEN_ELFNOTE_PVH_ENTRY
     db "Xen", 0

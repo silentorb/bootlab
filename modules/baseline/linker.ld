@@ -15,7 +15,7 @@ SECTIONS
     
     /* Xen PVH note MUST be in PT_NOTE segment */
     .note.Xen : {
-        KEEP(*(.note.Xen))
+        *(.note.Xen)
     } :note :text
 
     . = ALIGN(4K);

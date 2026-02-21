@@ -1,20 +1,16 @@
 cmake_minimum_required(VERSION 3.20)
-project(microvm_kernel C ASM_NASM)
+project(microvm_kernel C)
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type (Debug, Release, RelWithDebInfo, MinSizeRel)" FORCE)
 endif()
-
-set(CMAKE_ASM_NASM_OBJECT_FORMAT elf64)
-set(CMAKE_ASM_NASM_FLAGS "-g")
-
-enable_language(ASM_NASM)
 
 # Define output directories
 set(BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # Compile C code using CMake's built-in compilation
+add_compile_options($<$<CONFIG:Debug>:-gdwarf-3>)
 add_library(kernel_c OBJECT ${SRC_DIR}/kernel.c)
 target_compile_options(kernel_c PRIVATE -nostdlib -fno-builtin -fno-stack-protector -fno-pie -fno-pic -ffreestanding -mcmodel=kernel -mno-red-zone -fno-omit-frame-pointer)
 
